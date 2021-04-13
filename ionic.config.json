@@ -1,0 +1,7 @@
+{
+  "name": "utsambw1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
