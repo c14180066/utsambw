@@ -1,17 +1,38 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Input
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item>
+    <ion-label>Judul: </ion-label>
+    <ion-input type="text" [(ngModel)]="judul"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Isi Notes: </ion-label>
+    <ion-textarea [(ngModel)]="isi"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-input type="date" [(ngModel)]="tanggal"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nilai: </ion-label>
+    <ion-range min="0" max="10" step="1" [(ngModel)]='nilai'></ion-range>
+    <ion-label>{{nilai}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Gambar: </ion-label>
+    <ion-button (click)="uploadGambar()">Upload Gambar</ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" *ngFor="let isiFoto of globvarService.dataFoto; index as position">
+          <ion-img [src]="isiFoto.webviewPath" (click)="getNama(isiFoto)"></ion-img>  <!--KLIK IMAGE TERLEBIH DAHULU BARU SIMPAN DATA-->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <ion-button (click)="uploadData()">Simpan Data</ion-button>
 </ion-content>
